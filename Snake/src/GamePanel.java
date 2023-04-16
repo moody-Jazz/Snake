@@ -10,10 +10,10 @@ public class GamePanel extends JPanel implements ActionListener {
     static final int SCREEN_WIDTH = 600;
     static final int UNIT_SIZE = 20;
     static final int GAME_UNIT = (SCREEN_HEIGHT * SCREEN_WIDTH) / UNIT_SIZE;
-    static int DELAY = 200;
+    static int DELAY;
     final int x[] = new int[GAME_UNIT];
     final int y[] = new int[GAME_UNIT];
-    int bodyParts = 5;
+    int bodyParts;
     int applesEaten;
     short counter;
     int applex;
@@ -21,10 +21,12 @@ public class GamePanel extends JPanel implements ActionListener {
     static Color bgColor = new Color(102, 255, 102);
     static Color headColor = new Color(0, 20, 51);
     static Color bodyColor = new Color(0, 71, 179);
-    String direction = "Right";
+    String direction;
     boolean running = false;
     static Timer timer;
     Random random;
+    Button retry;
+    Button quit;
 
     GamePanel() {
         random = new Random();
@@ -33,11 +35,28 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         this.setVisible(true);
+        retry = new Button(this,"Retry",(SCREEN_WIDTH-100)/4,SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
+        quit = new Button(this,"Quit",((SCREEN_WIDTH/2 + SCREEN_WIDTH/4) - 100),SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
         startGame();
     }
 
-    private void startGame() {
-        newApple();
+    public void startGame() {
+    	
+    	applesEaten = 0;
+    	DELAY = 200;
+    	bodyParts = 5;
+    	direction ="Right";
+    	
+    	ScorePanel.scoreLabel.setText("Score: 0");
+    	this.remove(retry);
+    	this.remove(quit);
+    	
+    	
+    	for(int i = 0;i<bodyParts;i++)
+    		x[i] = y[i] = 0;
+    	
+        this.requestFocusInWindow();
+    	newApple();
         running = true;
         timer = new Timer(DELAY, this);
         timer.start();
@@ -162,8 +181,9 @@ public class GamePanel extends JPanel implements ActionListener {
         FontMetrics metrix = getFontMetrics(grafix.getFont());
         grafix.drawString("Game Over", (SCREEN_WIDTH - metrix.stringWidth("Game Over")) / 2, SCREEN_HEIGHT / 2);
         
-        this.add(new Button(this,"Retry",(SCREEN_WIDTH-100)/4,SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50));
-        this.add(new Button(this,"Quit",((SCREEN_WIDTH/2 + SCREEN_WIDTH/4) - 100),SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50));
+       
+        this.add(retry);
+        this.add(quit);
     }
 
     @Override

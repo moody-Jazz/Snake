@@ -8,18 +8,19 @@ import java.awt.event.ActionListener;
 public class Button extends JButton implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-
-	Button(Component parent,String name,int x, int y,int width, int height){
+	GamePanel game;
+	Button(GamePanel gamepanel, String name,int x, int y,int width, int height){
+		game = gamepanel;
 		switch(name) {
 		case "Retry":System.out.println("Retry");
-			retry(parent,name,x,y,width,height);
+			retry(gamepanel,name,x,y,width,height);
 			break;
 		case "Quit":System.out.println("Quit");
-			quit(parent,name,x,y,width,height);
+			quit(name,x,y,width,height);
 			break;
 		}
 	}
-	void retry(Component parent,String name,int x, int y, int width, int height) {
+	void retry(GamePanel gamepanel,String name,int x, int y, int width, int height) {
 		this.setBackground(GamePanel.bgColor);
         this.setBorder(null);
 		this.setText(name);
@@ -29,7 +30,7 @@ public class Button extends JButton implements ActionListener {
         this.addActionListener(this);
 	}
 	
-	void quit(Component parent, String name, int x, int y, int width, int height) {
+	void quit(String name, int x, int y, int width, int height) {
 		this.setBackground(GamePanel.bgColor);
         this.setBorder(null);
 		this.setText(name);
@@ -43,7 +44,10 @@ public class Button extends JButton implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 
 			if(event.getActionCommand().equals("Retry")) {
-				System.out.println("Retry Pressed");
+				
+				game.startGame();
+				
+				
 			}
 			else if(event.getActionCommand().equals("Quit")) {
 				
