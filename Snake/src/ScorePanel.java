@@ -1,10 +1,9 @@
 
 //import static com.mycompany.snake.GamePanel.SCREEN_WIDTH;
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
 
-public class ScorePanel extends JPanel implements ActionListener {
+public class ScorePanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	static JLabel scoreLabel = new JLabel("Score: 0");
@@ -25,9 +24,5 @@ public class ScorePanel extends JPanel implements ActionListener {
         this.add(highestScore);
         this.setVisible(true);
     }
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-
-    }
+   
 }

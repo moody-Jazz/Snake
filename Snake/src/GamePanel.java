@@ -25,18 +25,21 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean running = false;
     static Timer timer;
     Random random;
-    Button retry;
-    Button quit;
-
-    GamePanel() {
+    
+    private GameOverButtons retry;
+    private GameOverButtons quit;
+    private GameFrame gameFrame;
+    
+    GamePanel(GameFrame gameFrame) {
+    	this.gameFrame = gameFrame;
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH));
         this.setBackground(bgColor);
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         this.setVisible(true);
-        retry = new Button(this,"Retry",(SCREEN_WIDTH-100)/4,SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
-        quit = new Button(this,"Quit",((SCREEN_WIDTH/2 + SCREEN_WIDTH/4) - 100),SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
+        retry = new GameOverButtons(this.gameFrame, this,"Retry",(SCREEN_WIDTH-100)/4,SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
+        quit = new GameOverButtons(this.gameFrame,this,"Quit",((SCREEN_WIDTH/2 + SCREEN_WIDTH/4) - 100),SCREEN_HEIGHT/2+SCREEN_HEIGHT/4,100,50);
         startGame();
     }
 
@@ -59,7 +62,7 @@ public class GamePanel extends JPanel implements ActionListener {
     	newApple();
         running = true;
         timer = new Timer(DELAY, this);
-        timer.start();
+        
     }
 
     @Override
@@ -144,8 +147,8 @@ public class GamePanel extends JPanel implements ActionListener {
         if (x[0] == applex && y[0] == appley) {
             bodyParts++;
             applesEaten++;
-            ScorePanel.scoreLabel.setText("Score: " + applesEaten);
             counter++;
+            ScorePanel.scoreLabel.setText("Score: " + applesEaten);
             newApple();
         }
     }
@@ -192,15 +195,14 @@ public class GamePanel extends JPanel implements ActionListener {
             move();
             checkApple();
             checkCollision();
+          //After snake eats 3 apples each time its speed increases
+            if (counter % 3 == 0 && counter != 0) {
+                DELAY -= 10;
+                counter = 0;
+                timer.setDelay(DELAY);
+            }
             repaint();
         }
-        //After snake eats 3 apples each time its speed increases
-        if (counter % 3 == 0 && counter != 0) {
-            counter = 0;
-            DELAY -= 10;
-            timer.setDelay(DELAY);
-        }
-
     }
 
     class MyKeyAdapter extends KeyAdapter {
