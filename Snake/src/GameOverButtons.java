@@ -25,6 +25,7 @@ public class GameOverButtons extends JButton implements ActionListener {
 	void retry(String name,int x, int y, int width, int height) {
 		this.setBackground(GamePanel.bgColor);
         this.setBorder(null);
+        this.setFocusPainted(false);
 		this.setText(name);
         this.setFont(new Font("Arial", Font.BOLD, 30));
         this.setForeground(Color.white);
@@ -35,6 +36,7 @@ public class GameOverButtons extends JButton implements ActionListener {
 	void quit(String name, int x, int y, int width, int height) {
 		this.setBackground(GamePanel.bgColor);
         this.setBorder(null);
+        this.setFocusPainted(false);
 		this.setText(name);
         this.setFont(new Font("Arial", Font.BOLD, 30));
         this.setForeground(Color.white);
