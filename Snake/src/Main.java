@@ -1,9 +1,8 @@
 
 public class Main {
-
+static GameFrame gameFrame;
 	public static void main(String[] args) {
-		
-		new GameFrame();
+		gameFrame = new GameFrame();
 	}
 
 }

@@ -59,6 +59,7 @@ class Themes extends JPanel implements ActionListener {
 			staticColors.appleColor = new Color(254, 64, 86);
 			staticColors.btnColor = new Color(40, 38, 52);
 			staticColors.btnTextColor = new Color(254, 64, 86);
+			Main.gameFrame.setVisible(false);;
 			String args[] = new String[0];
 			Main.main(args);
 		} else if (event.getActionCommand().equals("Green Fields")) {
@@ -67,6 +68,7 @@ class Themes extends JPanel implements ActionListener {
 			staticColors.bodyColor = new Color(0, 71, 179);
 			staticColors.appleColor = new Color(255, 51, 51);
 			staticColors.btnColor = new Color(102, 255, 102);
+			Main.gameFrame.setVisible(false);
 			String args[] = new String[0];
 			Main.main(args);
 		}

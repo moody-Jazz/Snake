@@ -9,7 +9,7 @@ public class GameFrame extends JFrame {
 	CardLayout cardLayout = new CardLayout();
 
 	GameFrame() {
-		ImageIcon img = new ImageIcon("/Snake/src/logIcon.PNG");
+		ImageIcon img = new ImageIcon(getClass().getResource("/logIcon.PNG"));
 		this.setIconImage(img.getImage());
 		this.setTitle("Snake");
 		this.setResizable(false);
