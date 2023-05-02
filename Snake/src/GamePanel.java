@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements ActionListener {
 	short counter;
 	int applex;
 	int appley;
+	static boolean colorFul = false;
 	
 	String direction;
 	boolean running = false;
@@ -90,11 +91,22 @@ public class GamePanel extends JPanel implements ActionListener {
 					grafix.setColor(staticColors.headColor);
 					grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 				} else {
-					grafix.setColor(staticColors.bodyColor);
-					grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+					Random random  = new Random();
+					if(!colorFul) {
+						grafix.setColor(staticColors.bodyColor);
+						grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+					}
+					else {
+						grafix.setFont(new Font("Consolas", Font.BOLD, 50));
+						grafix.setColor(staticColors.rainbow[random.nextInt(staticColors.rainbow.length-1)]);
+						FontMetrics metrix = getFontMetrics(grafix.getFont());
+						grafix.drawString("You are gay", (SCREEN_WIDTH - metrix.stringWidth("You are gay")) / 2, SCREEN_HEIGHT / 8);
+						grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+					}
 				}
 			}
 		} else {
+			grafix.setColor(staticColors.btnTextColor);
 			gameOver(grafix);
 		}
 	}
@@ -178,7 +190,6 @@ public class GamePanel extends JPanel implements ActionListener {
 	}
 
 	public void gameOver(Graphics grafix) {
-		grafix.setColor(Color.white);
 		grafix.setFont(new Font("Consolas", Font.BOLD, 90));
 		FontMetrics metrix = getFontMetrics(grafix.getFont());
 		grafix.drawString("Game Over", (SCREEN_WIDTH - metrix.stringWidth("Game Over")) / 2, SCREEN_HEIGHT / 2);

@@ -36,22 +36,29 @@ class Themes extends JPanel implements ActionListener {
 		this.add(btnGreenFields);
 		btnGreenFields.addActionListener(this);
 
-		JButton btnBack = new JButton("<-Back");
-		btnBack.setBounds(93, 253, 378, 106);
-		btnBack.setFont(new Font("Consolas", Font.PLAIN, 50));
-		btnBack.setForeground(new Color(254, 64, 86));
-		btnBack.setBackground(new Color(40, 38, 52));
-		btnBack.setBorder(null);
-		btnBack.setFocusPainted(false);
-		this.add(btnBack);
-		btnBack.addActionListener(this);
+		JButton btnColorful = new JButton("Mysterious?");
+		btnColorful.setBounds(93, 253, 378, 106);
+		btnColorful.setFont(new Font("Consolas", Font.PLAIN, 50));
+		btnColorful.setForeground(new Color(254, 64, 86));
+		btnColorful.setBackground(new Color(40, 38, 52));
+		btnColorful.setBorder(null);
+		btnColorful.setFocusPainted(false);
+		this.add(btnColorful);
+		btnColorful.addActionListener(this);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		if (event.getActionCommand().equals("<-Back")) {
-			MainMenu.cardLayout.show(MainMenu.cardPanel, "mainPanel");
+		String args[] = new String[0];
+		if (event.getActionCommand().equals("Mysterious?")) {
+			staticColors.bgColor = new Color(255, 225, 245);
+			staticColors.headColor = Color.black;
+			staticColors.btnColor = new Color(255, 225, 245);
+			staticColors.btnTextColor = new Color(105, 45, 162);
+			GamePanel.colorFul = true;
+			Main.gameFrame.setVisible(false);
+			Main.main(args);
 		} else if (event.getActionCommand().equals("Dark Dungeon")) {
 			staticColors.bgColor = new Color(40, 38, 52);
 			staticColors.headColor = new Color(88, 87, 96);
@@ -59,8 +66,8 @@ class Themes extends JPanel implements ActionListener {
 			staticColors.appleColor = new Color(254, 64, 86);
 			staticColors.btnColor = new Color(40, 38, 52);
 			staticColors.btnTextColor = new Color(254, 64, 86);
-			Main.gameFrame.setVisible(false);;
-			String args[] = new String[0];
+			Main.gameFrame.setVisible(false);
+			GamePanel.colorFul = false;
 			Main.main(args);
 		} else if (event.getActionCommand().equals("Green Fields")) {
 			staticColors.bgColor = new Color(102, 255, 102);
@@ -68,8 +75,9 @@ class Themes extends JPanel implements ActionListener {
 			staticColors.bodyColor = new Color(0, 71, 179);
 			staticColors.appleColor = new Color(255, 51, 51);
 			staticColors.btnColor = new Color(102, 255, 102);
+			staticColors.btnTextColor = Color.white;
+			GamePanel.colorFul = false;
 			Main.gameFrame.setVisible(false);
-			String args[] = new String[0];
 			Main.main(args);
 		}
 	}

@@ -29,7 +29,7 @@ public class GameOverButtons extends JButton implements ActionListener {
 		this.setFocusPainted(false);
 		this.setText(name);
 		this.setFont(new Font("Consolas", Font.PLAIN, 40));
-		this.setForeground(Color.white);
+		this.setForeground(staticColors.btnTextColor);
 		this.setBounds(x, y, width+10, height);
 		this.setBackground(staticColors.btnColor);
 		this.addActionListener(this);
@@ -41,7 +41,7 @@ public class GameOverButtons extends JButton implements ActionListener {
 		this.setFocusPainted(false);
 		this.setText(name);
 		this.setFont(new Font("Consolas", Font.PLAIN, 40));
-		this.setForeground(Color.white);
+		this.setForeground(staticColors.btnTextColor);
 		this.setBounds(x, y, width, height);
 		this.setBackground(staticColors.btnColor);
 		this.addActionListener(this);
