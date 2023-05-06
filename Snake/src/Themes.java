@@ -36,7 +36,7 @@ class Themes extends JPanel implements ActionListener {
 		this.add(btnGreenFields);
 		btnGreenFields.addActionListener(this);
 
-		JButton btnColorful = new JButton("Mysterious?");
+		JButton btnColorful = new JButton("Rainbow Ride");
 		btnColorful.setBounds(93, 253, 378, 106);
 		btnColorful.setFont(new Font("Consolas", Font.PLAIN, 50));
 		btnColorful.setForeground(new Color(254, 64, 86));
@@ -51,8 +51,8 @@ class Themes extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		String args[] = new String[0];
-		if (event.getActionCommand().equals("Mysterious?")) {
-			staticColors.bgColor = new Color(255, 225, 245);
+		if (event.getActionCommand().equals("Rainbow Ride")) {
+			staticColors.bgColor = new Color(255, 228, 248);
 			staticColors.headColor = Color.black;
 			staticColors.btnColor = new Color(255, 225, 245);
 			staticColors.btnTextColor = new Color(105, 45, 162);

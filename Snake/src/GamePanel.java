@@ -97,10 +97,7 @@ public class GamePanel extends JPanel implements ActionListener {
 						grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 					}
 					else {
-						grafix.setFont(new Font("Consolas", Font.BOLD, 50));
 						grafix.setColor(staticColors.rainbow[random.nextInt(staticColors.rainbow.length-1)]);
-						FontMetrics metrix = getFontMetrics(grafix.getFont());
-						grafix.drawString("You are gay", (SCREEN_WIDTH - metrix.stringWidth("You are gay")) / 2, SCREEN_HEIGHT / 8);
 						grafix.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 					}
 				}
